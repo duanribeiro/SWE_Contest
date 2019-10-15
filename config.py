@@ -47,6 +47,7 @@ class BaseConfig:
     try:
         MONGO_URI = os.environ['MONGO_URI']
         JWT_SECRET_KEY = os.environ['JWT_SECRET_KEY']
+
     except KeyError as key:
         logger.critical(f'{key} env var is missing !')
         sys.exit()
