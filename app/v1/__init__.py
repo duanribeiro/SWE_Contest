@@ -22,8 +22,13 @@ api = Api(v1_blueprint,
 from .resources.auth.login import api as auth_ns
 from .resources.users.user import api as user_ns
 from .resources.queries.querie import api as querie_ns
+from .resources.imports.importer import api as importer_ns
+
+
 
 api.add_namespace(auth_ns)
 api.add_namespace(user_ns)
 api.add_namespace(querie_ns)
+api.add_namespace(importer_ns)
+
 

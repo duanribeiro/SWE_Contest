@@ -40,3 +40,17 @@ queries_payload = api.model('Queries Payload', {
     'filter_url': fields.List(fields.String(description='Filter')),
 })
 
+report = api.model('Report', {
+    'name': fields.String(required=True, description='The Username'),
+    'company': fields.String(description='User Email'),
+    'cost_center': fields.String(description='Work item state'),
+    'registry': fields.String(description='Work item closed date'),
+    'cpf': fields.String(description='Task id'),
+    'role': fields.String(description='Task Type'),
+    'admission_date': fields.String(description='Task State'),
+    'email': fields.String(description='Task Closed Date'),
+    'system': fields.String(description='Card Title'),
+    'system_user_tasks': fields.String(description='Assigned to'),
+    'system_user_bugs': fields.String(description='Assigned to email'),
+    'percentage': fields.String(description='Created by'),
+})
