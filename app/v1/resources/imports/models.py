@@ -1,10 +1,8 @@
-import json
 from app import mongo
-from flask_restplus import abort
-from bson.json_util import dumps
 from datetime import date
 
-def calculateAge(birthDate):
+
+def calculate_age(birthDate):
     try:
         today = date.today()
         age = today.year - birthDate.year - ((today.month, today.day) < (birthDate.month, birthDate.day))
@@ -27,7 +25,7 @@ class Imports:
 
         final_output = []
         for idx, row in df_people_analytics.iterrows():
-            age = calculateAge(row['Data Nascimento'])
+            age = calculate_age(row['Data Nascimento'])
 
             try:
                 final_output.append({

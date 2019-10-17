@@ -105,5 +105,3 @@ class ReportAPI(Resource):
                 montlhy_report.append(user_tasks)
 
         return montlhy_report
-
-

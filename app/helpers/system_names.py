@@ -45,7 +45,7 @@ new_names = {
     'Risk': 'Risk',
     'Asset Trader':'Asset Trader',
     'AutoAssign': 'AutoAssign',
-    'Gestor de Ativos' :  'Gestor de Ativos',
+    'Gestor de Ativos' : 'Gestor de Ativos',
     'Curva DI': 'Curva DI',
 
 }
