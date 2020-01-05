@@ -1,11 +1,9 @@
 import { createStore } from 'redux'
 
 const INITIAL_STATE =  {
-    data: [
-        'react',
-        'javascript',
-        'pendolao'
-    ]
+    'data': {
+      'life': 1
+    }
 }
 function courses(state=INITIAL_STATE, action) {
     switch (action.type) {
