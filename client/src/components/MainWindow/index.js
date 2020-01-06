@@ -1,9 +1,10 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 
 
+import axios from 'axios';
 
 import Hearts from './../Hearts'
 import Clock from './../Clock'
@@ -14,6 +15,27 @@ import "./styles.scss";
 
 export default function MainWindow() {
 
+    const [actions, setActions ] = useState([]) 
+    const [stage, setStage ] = useState()
+
+    const fetchStage = stage_name => {
+        axios.post(`${process.env.REACT_APP_BACKEND_API}/api/v1/game`, {"name": stage_name})
+        .then(response => {
+            setActions(response.data.actions)
+            setStage(response.data.text)
+            console.log(response.data.text)
+        })
+        .catch(error => {
+            console.error(error.message)
+        })
+    }
+
+    useEffect( () => { fetchStage("introduction") }, [] )
+
+    let textbox = <></>
+    if (stage) {
+        textbox =  <TextBox stage={stage}/>
+    }
     return (
         <>
             <Card
@@ -50,7 +72,9 @@ export default function MainWindow() {
                         item
                         >
                             <div className="middle_card">
-                                <TextBox/>
+                                {
+                                    textbox
+                                }
                             </div>
                         </Grid>
 
@@ -61,7 +85,7 @@ export default function MainWindow() {
                         justify="center"
                         alignItems="stretch"
                         >   
-                            <CardAction/>
+                            <CardAction actions={actions} fetchStage={fetchStage} setStage={setStage}/>
                         </Grid>
                     </Grid>
                 </CardContent>

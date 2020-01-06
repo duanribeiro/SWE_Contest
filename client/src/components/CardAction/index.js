@@ -4,28 +4,27 @@ import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
 
-export default function CardAction() {
-
-    const actions = [
-        {
-            "text": "Don't get into the car",
-            "tooltip": "Ajuda"
-        },
-        {
-            "text": "Get into the car",
-            "tooltip": "Ajuda2"
-        }
-    ]
+export default function CardAction(props) {
 
     return (
         <>
-        {actions.map(action => {
+        {props.actions.map((action, idx) => {
             return (
-            <Card style={{"marginTop": "20px"}}>
-                <Tooltip title={action.tooltip} placement="right" style={{"fontSize": "2em"}}>
+            <Card key={`card_${idx}`} style={{"marginTop": "20px"}}>
+                <Tooltip
+                key={`tooltip_${idx}`}
+                title={action.tooltip}
+                placement="right"
+                style={{"fontSize": "2em"}}
+                >
                     <Button
+                    key={`button_${idx}`}
                     variant="contained"
                     className="button_action"
+                    onClick={() => {
+                        props.setStage('')
+                        props.fetchStage("introduction_21")
+                    }}
                     style={{
                         "backgroundColor": "darkgray",
                         "borderColor": "black",

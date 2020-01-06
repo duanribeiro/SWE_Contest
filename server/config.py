@@ -45,8 +45,7 @@ class BaseConfig:
     PROPAGATE_EXCEPTIONS = True
 
     try:
-        MONGO_URI = os.environ['MONGO_URI']
-        JWT_SECRET_KEY = os.environ['JWT_SECRET_KEY']
+        MONGO_URI = "mongodb+srv://duanribeiro:BJ183r32@futebol-iwbwh.mongodb.net/playground?authSource=admin"
 
     except KeyError as key:
         logger.critical(f'{key} env var is missing !')

@@ -10,9 +10,9 @@ export default function Hearts() {
 
     for (let i = 1; i < 4; i++) {
         if (i <= life) {
-            hearts.push(<FavoriteIcon className="heart_filled" style={{ fontSize: 60 }}/>)
+            hearts.push(<FavoriteIcon key={`heart_${i}`} className="heart_filled" style={{ fontSize: 60 }}/>)
         } else {
-            hearts.push(<FavoriteBorderIcon className="heart_empty" style={{ fontSize: 60 }}/>)
+            hearts.push(<FavoriteBorderIcon key={`heart_${i}`} className="heart_empty" style={{ fontSize: 60 }}/>)
         }
       }
 
