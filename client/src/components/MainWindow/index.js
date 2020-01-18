@@ -2,18 +2,18 @@ import React, {useEffect, useState} from 'react'
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
-
-
 import axios from 'axios';
-
 import Hearts from './../Hearts'
 import Clock from './../Clock'
 import TextBox from './../TextBox'
 import CardAction from './../CardAction'
+import { useSelector } from 'react-redux'
 
 import "./styles.scss";
 
 export default function MainWindow() {
+    const time = useSelector(state => state.time)
+    const life = useSelector(state => state.life)
 
     const [actions, setActions ] = useState([]) 
     const [stage, setStage ] = useState()
@@ -29,7 +29,14 @@ export default function MainWindow() {
         })
     }
 
+    const checkLifeTime = life => {
+        if (life <= 0) {
+            fetchStage("dead_1")
+        } 
+    }
+
     useEffect( () => { fetchStage("introduction_0") }, [] )
+    useEffect( () => { checkLifeTime(life) }, [stage] )
 
     let textbox = <></>
     if (stage) {
@@ -62,7 +69,10 @@ export default function MainWindow() {
                             <Grid
                             item
                             >
-                                <Clock/>
+                                <Clock
+                                fetchStage={fetchStage}
+                                setStage={setStage}
+                                />
                             </Grid>
                         </Grid>
 
@@ -84,7 +94,11 @@ export default function MainWindow() {
                         justify="center"
                         alignItems="stretch"
                         >   
-                            <CardAction actions={actions} fetchStage={fetchStage} setStage={setStage}/>
+                            <CardAction
+                            actions={actions}
+                            fetchStage={fetchStage}
+                            setStage={setStage}
+                            />
                         </Grid>
                     </Grid>
                 </CardContent>

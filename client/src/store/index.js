@@ -2,7 +2,7 @@ import { createStore } from 'redux'
 
 const INITIAL_STATE =  {
     'life': 3,
-    'time': Date.now() + 500000
+    'time': Date.now() + 5000
 }
 
 function courses(state=INITIAL_STATE, action) {
