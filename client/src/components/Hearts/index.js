@@ -5,7 +5,7 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import { useSelector } from 'react-redux'
 
 export default function Hearts() {
-    const life = useSelector(state => state.data.life)
+    const life = useSelector(state => state.life)
     let hearts = []
 
     for (let i = 1; i < 4; i++) {

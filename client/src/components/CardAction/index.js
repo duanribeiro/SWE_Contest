@@ -3,8 +3,10 @@ import "./styles.scss"
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
+import { useDispatch } from 'react-redux'
 
 export default function CardAction(props) {
+    const dispatch = useDispatch()
 
     return (
         <>
@@ -23,7 +25,11 @@ export default function CardAction(props) {
                     className="button_action"
                     onClick={() => {
                         props.setStage('')
-                        props.fetchStage("introduction_21")
+                        props.fetchStage(action.next_card)
+
+                        if (action.effect) {
+                            dispatch({ type: action.effect.type, size: action.effect.size })
+                        }
                     }}
                     style={{
                         "backgroundColor": "darkgray",

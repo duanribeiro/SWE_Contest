@@ -1,8 +1,10 @@
 import React from 'react';
 import Countdown from 'react-countdown-now';
+import { useSelector } from 'react-redux'
 
 
 export default function Clock() {
+    const time = useSelector(state => state.time)
 
     const Completed = () => <span>You are good to go!</span>
  
@@ -30,7 +32,7 @@ export default function Clock() {
     return (
         <>
         <Countdown
-        date={Date.now() + 500000}
+        date={time}
         renderer={renderer}
         />
         </>

@@ -23,14 +23,13 @@ export default function MainWindow() {
         .then(response => {
             setActions(response.data.actions)
             setStage(response.data.text)
-            console.log(response.data.text)
         })
         .catch(error => {
             console.error(error.message)
         })
     }
 
-    useEffect( () => { fetchStage("introduction") }, [] )
+    useEffect( () => { fetchStage("introduction_0") }, [] )
 
     let textbox = <></>
     if (stage) {
